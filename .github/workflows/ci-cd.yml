@@ -51,10 +51,13 @@ jobs:
           echo "📥 Pulling latest code from GitHub..."
           git pull origin main
           echo "🔨 Building Docker image..."
-          docker-compose up --build
+          docker-compose build --no-cache app
           echo "🐳 Starting containers..."
           docker-compose down || true
           docker-compose up -d
+          echo "🧹 Cleaning up dangling images..."
+          docker image prune -f
+          docker volume prune -f --filter all=true
           echo "⏳ Waiting for app to start..."
           sleep 10
           echo "✅ Deployment completed!"
