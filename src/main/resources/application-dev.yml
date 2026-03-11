@@ -1,0 +1,50 @@
+# Spring
+spring:
+  config:
+    import: optional:file:.env.dev[.properties]
+
+  output:
+    ansi:
+      enabled: always
+  
+  datasource:
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/user-with-friends}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:mysecretpassword}
+    driver-class-name: org.postgresql.Driver
+    tomcat:
+      test-on-borrow: true
+      max-wait: 10000
+      max-active: 50
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  
+  # Redis
+  # data:
+  #   redis:
+  #     host: ${REDIS_HOST:localhost}
+  #     port: ${REDIS_PORT:6379}
+  # session:
+  #   timeout: 30m
+  #   redis:
+  #     flush-mode: on-save
+  #     namespace: myapp
+
+# server:
+#   servlet:
+#     session:
+#       cookie:
+#         name: JSESSIONID
+#         http-only: true
+#         same-site: lax
+#         secure: false 
+
+# Logging
+logging:
+  level:
+    '[org.hibernate.sql]': debug
+    '[org.hibernate.type]': trace

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: be-user-with-friends
+  
+  config:
+    import:
+    - optional:file:.env[.properties]
+
+  profiles:
+    active: ${APP_ENV:dev}
