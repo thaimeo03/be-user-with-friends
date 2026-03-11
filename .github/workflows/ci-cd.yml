@@ -47,7 +47,7 @@ jobs:
       - name: Deploy to VPS
         run: |
           ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
-          cd /sources/user-with-friends/backend
+          cd sources/user-with-friends/backend
           echo "📥 Pulling latest code from GitHub..."
           git pull origin main
           echo "🔨 Building Docker image..."
