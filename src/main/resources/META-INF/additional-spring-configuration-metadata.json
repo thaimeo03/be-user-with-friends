@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "app.max-session-per-user",
+  "type": "java.lang.String",
+  "description": "Maximum number of sessions allowed per user. Default is 1."
+}]}
