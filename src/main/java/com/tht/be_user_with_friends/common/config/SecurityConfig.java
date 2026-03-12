@@ -17,8 +17,8 @@ import com.tht.be_user_with_friends.helper.RestAuthenticationEntryPoint;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-  @Value("${app.max-session-per-user}")
-  private int maxSessionPerUser = 1;
+  @Value("${app.max-session-per-user:1}")
+  private int maxSessionPerUser;
 
   @Bean
   AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
