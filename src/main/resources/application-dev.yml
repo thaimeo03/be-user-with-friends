@@ -42,10 +42,14 @@ server:
         name: JSESSIONID
         http-only: true
         same-site: lax
-        secure: false 
+        secure: false
 
 # Logging
 logging:
   level:
     '[org.hibernate.sql]': debug
     '[org.hibernate.type]': trace
+
+# App
+app:
+  max-session-per-user: ${MAX_SESSION_PER_USER:1}
