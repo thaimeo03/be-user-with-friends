@@ -20,6 +20,19 @@ services:
       timeout: 5s
       retries: 5
 
+  redis:
+    image: redis:7-alpine
+    container_name: redis-user-with-friends
+    ports:
+      - "6379:6379"
+    networks:
+      - user-with-friends-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   app:
     build:
       context: .
@@ -30,10 +43,14 @@ services:
       POSTGRES_URL: jdbc:postgresql://postgres:5432/user-with-friends
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: mysecretpassword
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
     ports:
       - "8080:8080"
     depends_on:
       postgres:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     networks:
       - user-with-friends-network
