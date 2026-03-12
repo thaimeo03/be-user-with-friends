@@ -24,24 +24,25 @@ spring:
     show-sql: true
   
   # Redis
-  # data:
-  #   redis:
-  #     host: ${REDIS_HOST:localhost}
-  #     port: ${REDIS_PORT:6379}
-  # session:
-  #   timeout: 30m
-  #   redis:
-  #     flush-mode: on-save
-  #     namespace: myapp
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  session:
+    timeout: ${SESSION_TIMEOUT:30m}
+    data:
+      redis:
+        flush-mode: on-save
+        namespace: user-with-friends:session
 
-# server:
-#   servlet:
-#     session:
-#       cookie:
-#         name: JSESSIONID
-#         http-only: true
-#         same-site: lax
-#         secure: false 
+server:
+  servlet:
+    session:
+      cookie:
+        name: JSESSIONID
+        http-only: true
+        same-site: lax
+        secure: false 
 
 # Logging
 logging:
