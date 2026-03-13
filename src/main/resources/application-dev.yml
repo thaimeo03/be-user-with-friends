@@ -33,7 +33,7 @@ spring:
     data:
       redis:
         flush-mode: on-save
-        namespace: user-with-friends:session
+        namespace: user-with-friends
 
 server:
   servlet:
