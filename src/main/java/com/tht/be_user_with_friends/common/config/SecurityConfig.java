@@ -13,7 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.tht.be_user_with_friends.auth.filter.ValidUserFilter;
-import com.tht.be_user_with_friends.helper.RestAuthenticationEntryPoint;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,7 +33,7 @@ public class SecurityConfig {
   }
 
   @Bean
-  SecurityFilterChain filterChain(HttpSecurity http, RestAuthenticationEntryPoint authenticationEntryPoint)
+  SecurityFilterChain filterChain(HttpSecurity http)
       throws Exception {
     http
         .csrf(csrf -> csrf.disable())
@@ -46,8 +45,7 @@ public class SecurityConfig {
         .sessionManagement(session -> session
             .sessionFixation().migrateSession()
             .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-            .maximumSessions(maxSessionPerUser))
-        .exceptionHandling(ex -> ex.authenticationEntryPoint(authenticationEntryPoint));
+            .maximumSessions(maxSessionPerUser));
 
     return http.build();
 

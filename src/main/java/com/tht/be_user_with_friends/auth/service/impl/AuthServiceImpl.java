@@ -1,6 +1,5 @@
 package com.tht.be_user_with_friends.auth.service.impl;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.tht.be_user_with_friends.auth.dto.request.LoginRequest;
 import com.tht.be_user_with_friends.auth.service.AuthService;
 import com.tht.be_user_with_friends.common.enums.UserRole;
+import com.tht.be_user_with_friends.common.exception.BadRequestException;
 import com.tht.be_user_with_friends.common.exception.BannedUserException;
 
 import jakarta.servlet.http.HttpServletRequest;
